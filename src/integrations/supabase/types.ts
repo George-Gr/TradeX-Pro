@@ -80,6 +80,172 @@ export type Database = {
         }
         Relationships: []
       }
+      market_data_cache: {
+        Row: {
+          ask: number | null
+          bid: number | null
+          change: number | null
+          change_percent: number | null
+          high: number | null
+          id: string
+          low: number | null
+          open: number | null
+          price: number
+          symbol: string
+          updated_at: string
+          volume: number | null
+        }
+        Insert: {
+          ask?: number | null
+          bid?: number | null
+          change?: number | null
+          change_percent?: number | null
+          high?: number | null
+          id?: string
+          low?: number | null
+          open?: number | null
+          price: number
+          symbol: string
+          updated_at?: string
+          volume?: number | null
+        }
+        Update: {
+          ask?: number | null
+          bid?: number | null
+          change?: number | null
+          change_percent?: number | null
+          high?: number | null
+          id?: string
+          low?: number | null
+          open?: number | null
+          price?: number
+          symbol?: string
+          updated_at?: string
+          volume?: number | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          average_fill_price: number | null
+          commission: number | null
+          created_at: string
+          filled_at: string | null
+          filled_quantity: number | null
+          id: string
+          notes: string | null
+          order_type: string
+          price: number | null
+          quantity: number
+          side: string
+          status: string
+          stop_price: number | null
+          symbol: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          average_fill_price?: number | null
+          commission?: number | null
+          created_at?: string
+          filled_at?: string | null
+          filled_quantity?: number | null
+          id?: string
+          notes?: string | null
+          order_type: string
+          price?: number | null
+          quantity: number
+          side: string
+          status?: string
+          stop_price?: number | null
+          symbol: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          average_fill_price?: number | null
+          commission?: number | null
+          created_at?: string
+          filled_at?: string | null
+          filled_quantity?: number | null
+          id?: string
+          notes?: string | null
+          order_type?: string
+          price?: number | null
+          quantity?: number
+          side?: string
+          status?: string
+          stop_price?: number | null
+          symbol?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      positions: {
+        Row: {
+          current_price: number
+          entry_price: number
+          id: string
+          opened_at: string
+          quantity: number
+          realized_pnl: number | null
+          side: string
+          stop_loss: number | null
+          symbol: string
+          take_profit: number | null
+          unrealized_pnl: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          current_price: number
+          entry_price: number
+          id?: string
+          opened_at?: string
+          quantity: number
+          realized_pnl?: number | null
+          side: string
+          stop_loss?: number | null
+          symbol: string
+          take_profit?: number | null
+          unrealized_pnl?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          current_price?: number
+          entry_price?: number
+          id?: string
+          opened_at?: string
+          quantity?: number
+          realized_pnl?: number | null
+          side?: string
+          stop_loss?: number | null
+          symbol?: string
+          take_profit?: number | null
+          unrealized_pnl?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "positions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           account_status: Database["public"]["Enums"]["account_status"]
@@ -139,6 +305,60 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      trade_history: {
+        Row: {
+          commission: number | null
+          executed_at: string
+          id: string
+          order_id: string | null
+          pnl: number | null
+          price: number
+          quantity: number
+          side: string
+          symbol: string
+          user_id: string
+        }
+        Insert: {
+          commission?: number | null
+          executed_at?: string
+          id?: string
+          order_id?: string | null
+          pnl?: number | null
+          price: number
+          quantity: number
+          side: string
+          symbol: string
+          user_id: string
+        }
+        Update: {
+          commission?: number | null
+          executed_at?: string
+          id?: string
+          order_id?: string | null
+          pnl?: number | null
+          price?: number
+          quantity?: number
+          side?: string
+          symbol?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trade_history_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "trade_history_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {

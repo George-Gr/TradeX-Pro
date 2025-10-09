@@ -152,26 +152,48 @@ const Dashboard = () => {
             </Card>
           )}
 
-          {/* Coming Soon Sections */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
+          {/* Quick Actions */}
+          <div className="grid md:grid-cols-3 gap-4">
+            <Card className="cursor-pointer hover:border-primary transition-colors" onClick={() => navigate("/trading-terminal")}>
               <CardHeader>
-                <CardTitle>Trade</CardTitle>
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <TrendingUp className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <CardTitle>Trading Terminal</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">Execute trades</p>
+                  </div>
+                </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">Real-time trading interface coming soon.</p>
-                <Button disabled>Open Trade</Button>
-              </CardContent>
             </Card>
 
-            <Card>
+            <Card className="cursor-pointer hover:border-primary transition-colors" onClick={() => navigate("/portfolio")}>
               <CardHeader>
-                <CardTitle>Portfolio</CardTitle>
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-success/10 rounded-lg">
+                    <Wallet className="h-6 w-6 text-success" />
+                  </div>
+                  <div>
+                    <CardTitle>Portfolio</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">View positions</p>
+                  </div>
+                </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4">View your open positions and history.</p>
-                <Button disabled>View Portfolio</Button>
-              </CardContent>
+            </Card>
+
+            <Card className="cursor-pointer hover:border-primary transition-colors" onClick={() => navigate("/order-history")}>
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-accent/10 rounded-lg">
+                    <BarChart3 className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <CardTitle>Order History</CardTitle>
+                    <p className="text-sm text-muted-foreground mt-1">Past orders</p>
+                  </div>
+                </div>
+              </CardHeader>
             </Card>
           </div>
         </div>
