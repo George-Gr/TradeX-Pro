@@ -49,6 +49,9 @@ CREATE TABLE public.user_roles (
 );
 
 ALTER TABLE public.user_roles ENABLE ROW LEVEL SECURITY;
+-- Allow users to view their own role
+CREATE POLICY "Users can view their own role" ON public.user_roles FOR SELECT
+  USING (auth.uid() = user_id);
 
 -- Create security definer function for role checking
 CREATE OR REPLACE FUNCTION public.has_role(_user_id UUID, _role app_role)
