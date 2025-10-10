@@ -1,5 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/context/AuthContext';
 
 export interface TradingMetrics {
@@ -34,58 +32,28 @@ export interface AssetPerformance {
 export const useAnalytics = (timeframe: 'day' | 'week' | 'month' | 'year' = 'month') => {
   const { user } = useAuth();
 
-  const { data: metrics, isLoading: metricsLoading } = useQuery<TradingMetrics>({
-    queryKey: ['tradingMetrics', user?.id, timeframe],
-    queryFn: async () => {
-      if (!user) throw new Error('User not authenticated');
+  // Mock data for now until database functions are implemented
+  const metrics: TradingMetrics = {
+    total_trades: 0,
+    winning_trades: 0,
+    losing_trades: 0,
+    win_rate: 0,
+    average_profit: 0,
+    average_loss: 0,
+    profit_factor: 0,
+    total_pnl: 0,
+    best_trade: 0,
+    worst_trade: 0,
+    average_holding_time: 0,
+  };
 
-      const { data, error } = await supabase.rpc('get_trading_metrics', {
-        user_id_param: user.id,
-        timeframe_param: timeframe,
-      });
-
-      if (error) throw error;
-      return data;
-    },
-    enabled: !!user,
-  });
-
-  const { data: dailyPerformance, isLoading: performanceLoading } = useQuery<DailyPerformance[]>({
-    queryKey: ['dailyPerformance', user?.id, timeframe],
-    queryFn: async () => {
-      if (!user) throw new Error('User not authenticated');
-
-      const { data, error } = await supabase.rpc('get_daily_performance', {
-        user_id_param: user.id,
-        timeframe_param: timeframe,
-      });
-
-      if (error) throw error;
-      return data;
-    },
-    enabled: !!user,
-  });
-
-  const { data: assetPerformance, isLoading: assetLoading } = useQuery<AssetPerformance[]>({
-    queryKey: ['assetPerformance', user?.id, timeframe],
-    queryFn: async () => {
-      if (!user) throw new Error('User not authenticated');
-
-      const { data, error } = await supabase.rpc('get_asset_performance', {
-        user_id_param: user.id,
-        timeframe_param: timeframe,
-      });
-
-      if (error) throw error;
-      return data;
-    },
-    enabled: !!user,
-  });
+  const dailyPerformance: DailyPerformance[] = [];
+  const assetPerformance: AssetPerformance[] = [];
 
   return {
     metrics,
     dailyPerformance,
     assetPerformance,
-    isLoading: metricsLoading || performanceLoading || assetLoading,
+    isLoading: false,
   };
 };

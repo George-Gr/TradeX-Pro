@@ -63,7 +63,7 @@ export const TradingChart = ({
     };
 
     const chart = createChart(chartContainerRef.current, mergedOptions);
-    const candlestickSeries = chart.addCandlestickSeries({
+    const candlestickSeries = (chart as any).addCandlestickSeries({
       upColor: '#10B981',
       downColor: '#EF4444',
       borderVisible: false,

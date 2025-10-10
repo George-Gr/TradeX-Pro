@@ -1,4 +1,7 @@
-import { ErrorResponse } from './types';
+interface ErrorResponse {
+  code: string;
+  message: string;
+}
 
 export const isErrorResponse = (error: unknown): error is ErrorResponse => {
   return typeof error === 'object' && error !== null && 'code' in error && 'message' in error;

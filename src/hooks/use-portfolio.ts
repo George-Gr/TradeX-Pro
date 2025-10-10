@@ -71,7 +71,10 @@ export const usePortfolio = () => {
 
       if (error) throw error;
 
-      return data as OrderHistory[];
+      return data.map(order => ({
+        ...order,
+        type: order.order_type,
+      })) as OrderHistory[];
     },
     enabled: !!user,
   });

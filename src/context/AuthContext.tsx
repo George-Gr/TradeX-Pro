@@ -55,8 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .from('user_roles')
         .select('role')
         .eq('user_id', session.user.id)
-        .single()
-        .headers({ Accept: 'application/json' });
+        .single();
 
       setAuthState({
         session,

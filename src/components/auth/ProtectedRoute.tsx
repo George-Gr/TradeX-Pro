@@ -30,11 +30,10 @@ export const ProtectedRoute = ({ children, requiredRole = 'user' }: ProtectedRou
             .from('user_roles')
             .select('role')
             .eq('user_id', session.user.id)
-            .single()
-            .headers({ Accept: 'application/json' });
+            .single();
 
           if (roleError) {
-            console.error('Role fetch error:', roleError, JSON.stringify(roleData));
+            console.error('Role fetch error:', roleError);
             setIsAuthorized(false);
           } else {
             setIsAuthorized(roleData?.role === 'admin');

@@ -45,16 +45,10 @@ const Login = () => {
         .from('user_roles')
         .select('role')
         .eq('user_id', data.user.id)
-        .single()
-        .headers({ Accept: 'application/json' });
+        .single();
 
       if (roleError) {
-        console.error('Role fetch error:', roleError, JSON.stringify(roleData));
-        toast({
-          title: 'Role Fetch Error',
-          description: roleError.message || 'Could not fetch user role',
-          variant: 'destructive',
-        });
+        console.error('Role fetch error:', roleError);
         navigate('/dashboard');
       } else if (roleData?.role === 'admin') {
         navigate('/admin');
