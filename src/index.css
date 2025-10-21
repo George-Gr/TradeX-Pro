@@ -76,6 +76,17 @@ All colors MUST be HSL.
     --shadow-elevation-low: 0 2px 8px hsl(0 0% 0% / 0.15);
     --shadow-elevation-medium: 0 8px 24px hsl(0 0% 0% / 0.25);
     --shadow-elevation-high: 0 16px 48px hsl(0 0% 0% / 0.35);
+    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(158 64% 52% / 0.15), transparent 70%);
+    --gradient-text-premium: linear-gradient(135deg, hsl(210 40% 98%), hsl(158 64% 72%));
+  }
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+  
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
   }
 }
 
@@ -95,5 +106,55 @@ All colors MUST be HSL.
   }
   100% {
     background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .text-gradient-premium {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-text-premium);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
   }
 }
