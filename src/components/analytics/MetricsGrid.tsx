@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { TradingMetrics } from '@/hooks/use-analytics';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { TradingMetrics } from '../../hooks/use-analytics';
 
 interface MetricsGridProps {
   metrics: TradingMetrics;

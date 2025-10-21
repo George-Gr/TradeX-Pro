@@ -3,14 +3,68 @@ import { Slot } from '@radix-ui/react-slot';
 import { VariantProps, cva } from 'class-variance-authority';
 import { PanelLeft } from 'lucide-react';
 
-import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
-import { Sheet, SheetContent } from '@/components/ui/sheet';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+// Local fallback for useIsMobile hook (replaces '@/hooks/use-mobile' when that module is missing)
+const useIsMobile = (): boolean => {
+  const [isMobile, setIsMobile] = React.useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isMobile;
+};
+
+import { cn } from '../../lib/utils';
+import { Button } from './button';
+import { Input } from './input';
+import { Separator } from './separator';
+import { Sheet, SheetContent } from './sheet';
+import { Skeleton } from './skeleton';
+
+// Local fallback for Tooltip components (replaces '@/components/ui/tooltip' when that module is missing)
+export const Tooltip: React.FC<{ children?: React.ReactNode }> = ({ children }) => <>{children}</>;
+
+export const TooltipProvider: React.FC<{ children?: React.ReactNode; delayDuration?: number }> = ({
+  children,
+}) => <>{children}</>;
+
+export const TooltipTrigger = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement> & { asChild?: boolean }>(
+  ({ asChild = false, children, ...props }, ref) => {
+    if (asChild && React.isValidElement(children)) {
+      return React.cloneElement(children as React.ReactElement, { ref, ...props });
+    }
+    return (
+      <span ref={ref as React.Ref<HTMLSpanElement>} {...props}>
+        {children}
+      </span>
+    );
+  }
+);
+
+export const TooltipContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { side?: string; align?: string; hidden?: boolean }
+>(({ hidden, style, className, children, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      role="tooltip"
+      style={{ display: hidden ? 'none' : undefined, ...style }}
+      className={className}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+});
+
+import { useSidebar, SidebarContext } from './sidebar.hooks';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar:state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -19,7 +73,7 @@ const SIDEBAR_WIDTH_MOBILE = '18rem';
 const SIDEBAR_WIDTH_ICON = '3rem';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 
-type SidebarContext = {
+type SidebarContextValue = {
   state: 'expanded' | 'collapsed';
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -29,16 +83,7 @@ type SidebarContext = {
   toggleSidebar: () => void;
 };
 
-const SidebarContext = React.createContext<SidebarContext | null>(null);
 
-function useSidebar() {
-  const context = React.useContext(SidebarContext);
-  if (!context) {
-    throw new Error('useSidebar must be used within a SidebarProvider.');
-  }
-
-  return context;
-}
 
 const SidebarProvider = React.forwardRef<
   HTMLDivElement,
@@ -104,7 +149,7 @@ const SidebarProvider = React.forwardRef<
     // This makes it easier to style the sidebar with Tailwind classes.
     const state = open ? 'expanded' : 'collapsed';
 
-    const contextValue = React.useMemo<SidebarContext>(
+    const contextValue = React.useMemo<SidebarContextValue>(
       () => ({
         state,
         open,
@@ -730,5 +775,4 @@ export {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-  useSidebar,
 };

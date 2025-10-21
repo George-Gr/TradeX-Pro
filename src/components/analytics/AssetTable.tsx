@@ -1,4 +1,4 @@
-import { AssetPerformance } from '@/hooks/use-analytics';
+import { AssetPerformance } from '../../hooks/use-analytics';
 import {
   Table,
   TableBody,
@@ -6,8 +6,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+} from '../ui/table';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 interface AssetTableProps {
   assets: AssetPerformance[];

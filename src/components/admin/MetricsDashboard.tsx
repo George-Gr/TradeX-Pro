@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AdminMetrics } from '@/types/admin';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { AdminMetrics } from '../../types/admin';
 
 interface MetricsDashboardProps {
   metrics: AdminMetrics | null;

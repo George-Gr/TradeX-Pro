@@ -1,5 +1,5 @@
-import { DailyPerformance } from '@/hooks/use-analytics';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { DailyPerformance } from '../../hooks/use-analytics';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { format, subDays } from 'date-fns';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
