@@ -20,8 +20,8 @@ begin
     (select count(*) from kyc_documents where status = 'pending') as kyc_pending,
     coalesce((select sum(amount) from wallet_transactions where type = 'deposit' and status = 'completed'), 0) as total_deposits,
     coalesce((select sum(amount) from wallet_transactions where type = 'withdrawal' and status = 'completed'), 0) as total_withdrawals,
-    coalesce((select sum(price * quantity) from orders where status = 'closed'), 0) as total_volume,
-    coalesce((select sum(price * quantity * 0.001) from orders where status = 'closed'), 0) as total_commission;
+    coalesce((select sum(price * quantity) from orders where status = 'filled'), 0) as total_volume,
+    coalesce((select sum(price * quantity * 0.001) from orders where status = 'filled'), 0) as total_commission;
 end;
 $$;
 

@@ -15,9 +15,7 @@ export const useBreakpoint = (breakpoint: Breakpoint) => {
   const [matches, setMatches] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(
-      `(min-width: ${theme.breakpoints[breakpoint]})`
-    );
+    const mediaQuery = window.matchMedia(`(min-width: ${theme.breakpoints[breakpoint]})`);
     setMatches(mediaQuery.matches);
 
     const listener = (e: MediaQueryListEvent) => {
@@ -46,14 +44,14 @@ export const useIsDesktop = () => {
 };
 
 // Layout utilities
-export const getResponsiveValue = <T,>(
+export const getResponsiveValue = <T>(
   value: T | Partial<Record<Breakpoint, T>>,
   currentBreakpoint: Breakpoint
 ): T | undefined => {
   if (typeof value === 'object' && value !== null) {
     const breakpoints = Object.keys(breakpointValues) as Breakpoint[];
     const breakpointIndex = breakpoints.indexOf(currentBreakpoint);
-    
+
     // Find the closest defined breakpoint value
     for (let i = breakpointIndex; i >= 0; i--) {
       const breakpoint = breakpoints[i];

@@ -20,6 +20,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { useToast } from '@/hooks/use-toast';
+import { toast } from '@/utils/toast';
 import { format } from 'date-fns';
 
 const WalletDashboard = () => {
@@ -56,10 +57,10 @@ const WalletDashboard = () => {
       }
       setAmount('');
       setShowDialog(false);
-    } catch (error: any) {
+    } catch (error) {
       toast({
         title: 'Transaction failed',
-        description: error.message || 'Please try again later.',
+        description: error instanceof Error ? error.message : 'Please try again later.',
         variant: 'destructive',
       });
     }

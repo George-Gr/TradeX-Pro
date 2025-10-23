@@ -4,6 +4,7 @@ import { TransactionsTable } from '@/components/admin/TransactionsTable';
 import { UsersTable } from '@/components/admin/UsersTable';
 import { useAdmin } from '@/hooks/use-admin';
 import { useToast } from '@/hooks/use-toast';
+import { toast } from '@/utils/toast';
 
 const Admin = () => {
   const {

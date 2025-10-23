@@ -1,26 +1,6 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-
-interface Language {
-  code: string;
-  name: string;
-  flag: string;
-}
-
-interface LanguageContextType {
-  currentLanguage: Language;
-  setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
-  languages: Language[];
-}
-
-export const languages: Language[] = [
-  { code: 'en', name: 'English', flag: '🇺🇸' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-];
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+import { ReactNode, useEffect, useState } from 'react';
+import { Language, languages } from './language-constants';
+import { LanguageContext } from './language-context-definitions';
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>(languages[0]);
@@ -52,12 +32,4 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
-};
-
-export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
 };

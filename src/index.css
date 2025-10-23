@@ -60,11 +60,7 @@ All colors MUST be HSL.
       hsl(220 15% 12%) 50%,
       hsl(220 15% 8%) 100%
     );
-    --gradient-card: linear-gradient(
-      135deg,
-      hsl(220 15% 12%) 0%,
-      hsl(220 15% 10%) 100%
-    );
+    --gradient-card: linear-gradient(135deg, hsl(220 15% 12%) 0%, hsl(220 15% 10%) 100%);
     --gradient-shine: linear-gradient(
       110deg,
       transparent 25%,
@@ -83,7 +79,7 @@ All colors MUST be HSL.
 
 @layer base {
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
-  
+
   :root {
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-display: 'Playfair Display', Georgia, serif;
@@ -110,7 +106,8 @@ All colors MUST be HSL.
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -119,7 +116,8 @@ All colors MUST be HSL.
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }

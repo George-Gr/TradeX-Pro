@@ -34,18 +34,19 @@ export const TooltipProvider: React.FC<{ children?: React.ReactNode; delayDurati
   children,
 }) => <>{children}</>;
 
-export const TooltipTrigger = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement> & { asChild?: boolean }>(
-  ({ asChild = false, children, ...props }, ref) => {
-    if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(children as React.ReactElement, { ref, ...props });
-    }
-    return (
-      <span ref={ref as React.Ref<HTMLSpanElement>} {...props}>
-        {children}
-      </span>
-    );
+export const TooltipTrigger = React.forwardRef<
+  HTMLElement,
+  React.HTMLAttributes<HTMLElement> & { asChild?: boolean }
+>(({ asChild = false, children, ...props }, ref) => {
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children as React.ReactElement, { ref, ...props });
   }
-);
+  return (
+    <span ref={ref as React.Ref<HTMLSpanElement>} {...props}>
+      {children}
+    </span>
+  );
+});
 
 export const TooltipContent = React.forwardRef<
   HTMLDivElement,
@@ -82,8 +83,6 @@ type SidebarContextValue = {
   isMobile: boolean;
   toggleSidebar: () => void;
 };
-
-
 
 const SidebarProvider = React.forwardRef<
   HTMLDivElement,

@@ -72,11 +72,7 @@ export interface TextProps
 export const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
   ({ className, size, weight, variant, ...props }, ref) => {
     return (
-      <p
-        ref={ref}
-        className={cn(textVariants({ size, weight, variant, className }))}
-        {...props}
-      />
+      <p ref={ref} className={cn(textVariants({ size, weight, variant, className }))} {...props} />
     );
   }
 );

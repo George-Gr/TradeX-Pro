@@ -9,14 +9,7 @@ import {
   DialogTrigger,
 } from '../ui/dialog';
 import { Input } from '../ui/input';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '../ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { AdminKYCReview } from '../../types/admin';
 import { useState } from 'react';
 

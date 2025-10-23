@@ -21,7 +21,13 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": false,
 
-  // baseUrl, ignoreDeprecations, and paths removed
+    /* Path mapping */
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["supabase/**"]
 }

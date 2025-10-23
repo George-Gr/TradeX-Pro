@@ -20,11 +20,7 @@ interface SidebarProps {
   onToggle?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({
-  navigation,
-  isCollapsed = false,
-  onToggle,
-}) => {
+export const Sidebar: React.FC<SidebarProps> = ({ navigation, isCollapsed = false, onToggle }) => {
   const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
   const location = useLocation();
 
@@ -36,9 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
     >
       <div className="flex items-center justify-between h-16 px-4 border-b border-neutral-200">
-        {!isCollapsed && (
-          <span className="text-lg font-semibold">TradeX Pro</span>
-        )}
+        {!isCollapsed && <span className="text-lg font-semibold">TradeX Pro</span>}
         <button
           onClick={onToggle}
           className="p-2 rounded-md hover:bg-neutral-100"

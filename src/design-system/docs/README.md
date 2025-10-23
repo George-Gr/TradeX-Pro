@@ -1,9 +1,11 @@
 # TradeX Pro Design System
 
 ## Overview
+
 The TradeX Pro Design System is a comprehensive collection of reusable components, patterns, and guidelines that ensure consistency across the TradeX Pro trading platform.
 
 ## Core Principles
+
 1. **Consistency**: Unified visual language across all components
 2. **Flexibility**: Adaptable components that work in various contexts
 3. **Performance**: Optimized for trading platform requirements
@@ -12,6 +14,7 @@ The TradeX Pro Design System is a comprehensive collection of reusable component
 ## Components
 
 ### Button
+
 ```tsx
 import { Button } from '@/design-system';
 
@@ -26,6 +29,7 @@ import { Button } from '@/design-system';
 ```
 
 ### Input
+
 ```tsx
 import { Input } from '@/design-system';
 
@@ -42,6 +46,7 @@ import { Input } from '@/design-system';
 ```
 
 ### Card
+
 ```tsx
 import { Card, CardHeader, CardTitle, CardContent } from '@/design-system';
 
@@ -49,13 +54,12 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/design-system';
   <CardHeader>
     <CardTitle>Market Overview</CardTitle>
   </CardHeader>
-  <CardContent>
-    Content goes here
-  </CardContent>
-</Card>
+  <CardContent>Content goes here</CardContent>
+</Card>;
 ```
 
 ### Typography
+
 ```tsx
 import { Heading, Text } from '@/design-system';
 
@@ -66,6 +70,7 @@ import { Heading, Text } from '@/design-system';
 ```
 
 ### Grid
+
 ```tsx
 import { Grid } from '@/design-system';
 
@@ -73,20 +78,24 @@ import { Grid } from '@/design-system';
   <div>Column 1</div>
   <div>Column 2</div>
   <div>Column 3</div>
-</Grid>
+</Grid>;
 ```
 
 ## Theme
 
 ### Colors
+
 The color system is organized into functional categories:
+
 - Primary: Brand colors
 - Neutral: Grayscale
 - Success: Positive actions/states
 - Error: Negative actions/states
 
 ### Typography
+
 Font sizes are designed for optimal readability:
+
 - xs: 0.75rem (12px)
 - sm: 0.875rem (14px)
 - md: 1rem (16px)
@@ -94,7 +103,9 @@ Font sizes are designed for optimal readability:
 - xl: 1.25rem (20px)
 
 ### Spacing
+
 Consistent spacing scale:
+
 - xs: 0.25rem (4px)
 - sm: 0.5rem (8px)
 - md: 1rem (16px)
@@ -104,17 +115,19 @@ Consistent spacing scale:
 ## Responsive Design
 
 ### Breakpoints
+
 ```typescript
 const breakpoints = {
   xs: '320px',
   sm: '640px',
   md: '768px',
   lg: '1024px',
-  xl: '1280px'
+  xl: '1280px',
 };
 ```
 
 ### Utilities
+
 ```typescript
 // Responsive hooks
 const isMobile = useIsMobile();

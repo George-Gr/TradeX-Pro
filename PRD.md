@@ -1686,20 +1686,20 @@ POST https://api.nowpayments.io/v1/invoice
 }
 
 2.
-3.  **NowPayments Creates Invoice**
-    - Returns payment address
-    - Provides payment link / QR code
-    - Frontend displays payment details
+3. **NowPayments Creates Invoice**
+   - Returns payment address
+   - Provides payment link / QR code
+   - Frontend displays payment details
 
-4.  **User Sends Crypto**
-    - Scans QR or copies address
-    - Sends crypto from wallet
-    - Blockchain confirms transaction
+4. **User Sends Crypto**
+   - Scans QR or copies address
+   - Sends crypto from wallet
+   - Blockchain confirms transaction
 
-5.  **NowPayments Confirms Payment**
-    - Sends webhook to backend
-    - Edge Function receives webhook
-    - Validates payment
+5. **NowPayments Confirms Payment**
+   - Sends webhook to backend
+   - Edge Function receives webhook
+   - Validates payment
 
 **Backend Processing**
 
@@ -1727,10 +1727,10 @@ Broadcasts Realtime update
 Sends notification to user: "Deposit received\! \+$1,000"
 
 6.
-7.  **Real-Time Sync**
-    - User sees balance updated immediately
-    - Equity, margin metrics refresh
-    - Can now trade with deposited funds
+7. **Real-Time Sync**
+   - User sees balance updated immediately
+   - Equity, margin metrics refresh
+   - Can now trade with deposited funds
 
 ---
 
@@ -1922,12 +1922,12 @@ export const AuthCallback \= () \=\> {
 └─────────────────────────────────────┘
 
 1.
-2.  **Confirmation Flow**
-    - Admin clicks "Confirm"
-    - System updates balance
-    - Ledger entry created
-    - User receives notification
-    - Dashboard reflects new balance immediately
+2. **Confirmation Flow**
+   - Admin clicks "Confirm"
+   - System updates balance
+   - Ledger entry created
+   - User receives notification
+   - Dashboard reflects new balance immediately
 
 ---
 

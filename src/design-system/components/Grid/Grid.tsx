@@ -39,11 +39,7 @@ export interface GridProps
 export const Grid = React.forwardRef<HTMLDivElement, GridProps>(
   ({ className, cols, gap, responsive, children, ...props }, ref) => {
     return (
-      <div
-        className={cn(gridVariants({ cols, gap, responsive, className }))}
-        ref={ref}
-        {...props}
-      >
+      <div className={cn(gridVariants({ cols, gap, responsive, className }))} ref={ref} {...props}>
         {children}
       </div>
     );

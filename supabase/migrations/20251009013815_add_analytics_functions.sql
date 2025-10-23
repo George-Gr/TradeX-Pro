@@ -43,7 +43,7 @@ begin
     coalesce(avg(pnl) filter (where pnl > 0), 0) as average_profit,
     coalesce(avg(pnl) filter (where pnl < 0), 0) as average_loss,
     coalesce(
-      abs(sum(pnl) filter (where pnl > 0)) / 
+      abs(sum(pnl) filter (where pnl > 0)) /
       nullif(abs(sum(pnl) filter (where pnl < 0)), 0),
       0
     ) as profit_factor,
@@ -51,13 +51,13 @@ begin
     coalesce(max(pnl), 0) as best_trade,
     coalesce(min(pnl), 0) as worst_trade,
     coalesce(
-      avg(extract(epoch from (closed_at - created_at)) / 3600),
+      avg(extract(epoch from (filled_at - created_at)) / 3600),
       0
     ) as average_holding_time
   from orders
   where user_id = user_id_param
-    and status = 'closed'
-    and closed_at >= start_date;
+    and status = 'filled'
+    and filled_at >= start_date;
 end;
 $$;
 
@@ -88,15 +88,15 @@ begin
 
   return query
   select
-    date(closed_at) as date,
+    date(filled_at) as date,
     sum(pnl) as pnl,
     count(*)::bigint as trades,
     count(*) filter (where pnl > 0)::numeric / count(*)::numeric as win_rate
   from orders
   where user_id = user_id_param
-    and status = 'closed'
-    and closed_at >= start_date
-  group by date(closed_at)
+    and status = 'filled'
+    and filled_at >= start_date
+  group by date(filled_at)
   order by date;
 end;
 $$;
@@ -136,8 +136,8 @@ begin
     avg(pnl) as average_pnl
   from orders
   where user_id = user_id_param
-    and status = 'closed'
-    and closed_at >= start_date
+    and status = 'filled'
+    and filled_at >= start_date
   group by symbol
   order by total_pnl desc;
 end;

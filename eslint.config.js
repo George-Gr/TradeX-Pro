@@ -14,8 +14,8 @@ export default tseslint.config(
       '.next/**',
       '*.log',
       '.env*',
-      '!.env.example'
-    ]
+      '!.env.example',
+    ],
   },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],

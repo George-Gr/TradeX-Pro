@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { useToast } from '../../hooks/use-toast';
+import { toast } from '../../utils/toast';
 import { useState } from 'react';
 
 const KYCVerification = () => {

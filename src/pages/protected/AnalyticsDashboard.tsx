@@ -23,7 +23,10 @@ const AnalyticsDashboard = () => {
     <div className="container mx-auto p-4 space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Analytics Dashboard</h1>
-        <Select value={timeframe} onValueChange={(value: any) => setTimeframe(value)}>
+        <Select
+          value={timeframe}
+          onValueChange={(value: 'day' | 'week' | 'month' | 'year') => setTimeframe(value)}
+        >
           <SelectTrigger className="w-40">
             <SelectValue placeholder="Select Timeframe" />
           </SelectTrigger>

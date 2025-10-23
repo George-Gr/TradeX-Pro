@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { WalletTransaction, WalletBalance } from '@/types/kyc';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/hooks/use-auth';
 
 export const useWallet = () => {
   const { user } = useAuth();

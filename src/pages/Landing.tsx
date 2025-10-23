@@ -32,7 +32,15 @@ import { Helmet } from 'react-helmet';
 import { useState, useEffect, useRef } from 'react';
 
 // Animated Counter Component
-const AnimatedCounter = ({ end, duration = 2000, suffix = '' }: { end: number; duration?: number; suffix?: string }) => {
+const AnimatedCounter = ({
+  end,
+  duration = 2000,
+  suffix = '',
+}: {
+  end: number;
+  duration?: number;
+  suffix?: string;
+}) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -77,8 +85,12 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = '' }: { end: number; d
   }, [isVisible, end, duration]);
 
   return (
-    <div ref={ref} className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent">
-      {count.toLocaleString()}{suffix}
+    <div
+      ref={ref}
+      className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent"
+    >
+      {count.toLocaleString()}
+      {suffix}
     </div>
   );
 };
@@ -99,27 +111,33 @@ const Landing = () => {
   const faqs = [
     {
       question: 'Is TradePro really 100% free?',
-      answer: 'Yes! Creating an account and accessing our full trading simulator is completely free. There are no hidden fees, subscriptions, or credit card requirements. You get $100,000 virtual capital and access to all features at no cost.',
+      answer:
+        'Yes! Creating an account and accessing our full trading simulator is completely free. There are no hidden fees, subscriptions, or credit card requirements. You get $100,000 virtual capital and access to all features at no cost.',
     },
     {
       question: 'What is paper trading and how does it work?',
-      answer: 'Paper trading is simulated trading with virtual money. It allows you to practice trading strategies, test ideas, and learn without risking real capital. Our platform uses real-time market data to provide an authentic trading experience that mirrors live conditions.',
+      answer:
+        'Paper trading is simulated trading with virtual money. It allows you to practice trading strategies, test ideas, and learn without risking real capital. Our platform uses real-time market data to provide an authentic trading experience that mirrors live conditions.',
     },
     {
       question: 'Can I trade real money on this platform?',
-      answer: 'TradePro is exclusively a paper trading platform for educational purposes. We focus on providing the best risk-free learning environment. If you want to transition to real trading, you can apply the skills learned here to any broker platform.',
+      answer:
+        'TradePro is exclusively a paper trading platform for educational purposes. We focus on providing the best risk-free learning environment. If you want to transition to real trading, you can apply the skills learned here to any broker platform.',
     },
     {
       question: 'How realistic is the trading experience?',
-      answer: 'Extremely realistic. We use live market data, accurate spread calculations, realistic slippage, and authentic order execution. The only difference from real trading is that your capital is virtual. This allows you to learn without financial risk.',
+      answer:
+        'Extremely realistic. We use live market data, accurate spread calculations, realistic slippage, and authentic order execution. The only difference from real trading is that your capital is virtual. This allows you to learn without financial risk.',
     },
     {
       question: 'Do I need trading experience to start?',
-      answer: 'No! TradePro is designed for all skill levels. Complete beginners can start with our Trading Academy, follow our tutorials, and gradually build their skills. Experienced traders can use the platform to test new strategies or refine their techniques.',
+      answer:
+        'No! TradePro is designed for all skill levels. Complete beginners can start with our Trading Academy, follow our tutorials, and gradually build their skills. Experienced traders can use the platform to test new strategies or refine their techniques.',
     },
     {
       question: 'What markets can I trade?',
-      answer: 'You can trade 90+ instruments across 5 asset classes: Forex (currency pairs), Stocks (major companies), Commodities (gold, oil, etc.), Indices (S&P 500, NASDAQ, etc.), and Cryptocurrencies (Bitcoin, Ethereum, etc.).',
+      answer:
+        'You can trade 90+ instruments across 5 asset classes: Forex (currency pairs), Stocks (major companies), Commodities (gold, oil, etc.), Indices (S&P 500, NASDAQ, etc.), and Cryptocurrencies (Bitcoin, Ethereum, etc.).',
     },
   ];
 
@@ -131,10 +149,16 @@ const Landing = () => {
           name="description"
           content="Experience professional-grade CFD trading simulation with virtual funds. Perfect your strategy, copy elite traders, and analyze real-time market data. Join 100K+ traders mastering the markets risk-free."
         />
-        <meta name="keywords" content="trading simulator, CFD trading, copy trading, virtual trading, trading platform, market analysis, risk-free trading" />
+        <meta
+          name="keywords"
+          content="trading simulator, CFD trading, copy trading, virtual trading, trading platform, market analysis, risk-free trading"
+        />
         <link rel="canonical" href="https://tradepro.app" />
         <meta property="og:title" content="TradePro - Master CFD Trading Without Risk" />
-        <meta property="og:description" content="Join 100K+ traders perfecting their strategies on our professional trading simulator." />
+        <meta
+          property="og:description"
+          content="Join 100K+ traders perfecting their strategies on our professional trading simulator."
+        />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -170,17 +194,18 @@ const Landing = () => {
 
                 <div className="space-y-6">
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1]">
-                    <span className="text-gradient-premium">
-                      Master Trading
-                    </span>
+                    <span className="text-gradient-premium">Master Trading</span>
                     <br />
                     <span className="bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
                       Without The Risk
                     </span>
                   </h1>
-                  
+
                   <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    Experience institutional-grade trading with <span className="text-primary font-semibold">$100,000 virtual capital</span>. Perfect your strategy, learn from experts, and master the markets before risking real money.
+                    Experience institutional-grade trading with{' '}
+                    <span className="text-primary font-semibold">$100,000 virtual capital</span>.
+                    Perfect your strategy, learn from experts, and master the markets before risking
+                    real money.
                   </p>
                 </div>
 
@@ -191,8 +216,8 @@ const Landing = () => {
                   className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 >
                   <Link to="/signup">
-                    <Button 
-                      size="lg" 
+                    <Button
+                      size="lg"
                       className="group relative overflow-hidden shadow-[var(--glow-subtle)] hover:shadow-[var(--glow-primary)] transition-all duration-300 px-8 text-base h-14"
                     >
                       <span className="relative z-10 flex items-center gap-2 font-semibold">
@@ -202,10 +227,10 @@ const Landing = () => {
                       <div className="absolute inset-0 bg-gradient-shine bg-[length:200%_100%] group-hover:animate-[shimmer_2s_infinite]" />
                     </Button>
                   </Link>
-                  
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
+
+                  <Button
+                    size="lg"
+                    variant="outline"
                     className="group border-primary/20 hover:border-primary/40 hover:bg-primary/5 text-base h-14"
                     onClick={() => setVideoModalOpen(true)}
                   >
@@ -261,11 +286,11 @@ const Landing = () => {
                           +12.4%
                         </div>
                       </div>
-                      
+
                       {/* Chart placeholder with animated bars */}
                       <div className="h-48 bg-gradient-to-br from-primary/5 to-transparent rounded-xl border border-primary/10 flex items-end justify-around p-4 gap-2 overflow-hidden relative">
                         {[...Array(12)].map((_, i) => (
-                          <motion.div 
+                          <motion.div
                             key={i}
                             initial={{ height: 0 }}
                             animate={{ height: `${Math.random() * 70 + 30}%` }}
@@ -279,14 +304,14 @@ const Landing = () => {
 
                       {/* Stats */}
                       <div className="grid grid-cols-2 gap-4">
-                        <motion.div 
+                        <motion.div
                           whileHover={{ scale: 1.02 }}
                           className="p-4 rounded-xl bg-background/40 border border-border/50 backdrop-blur-sm"
                         >
                           <div className="text-sm text-muted-foreground">Win Rate</div>
                           <div className="text-2xl font-bold text-success">68.3%</div>
                         </motion.div>
-                        <motion.div 
+                        <motion.div
                           whileHover={{ scale: 1.02 }}
                           className="p-4 rounded-xl bg-background/40 border border-border/50 backdrop-blur-sm"
                         >
@@ -308,7 +333,10 @@ const Landing = () => {
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-primary/5 rounded-full blur-3xl" />
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
+            <div
+              className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-3xl animate-pulse-glow"
+              style={{ animationDelay: '1s' }}
+            />
           </div>
         </motion.section>
 
@@ -322,15 +350,14 @@ const Landing = () => {
             className="text-center space-y-4 mb-16"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold">
-              <span className="text-gradient-premium">
-                Why Choose{' '}
-              </span>
+              <span className="text-gradient-premium">Why Choose </span>
               <span className="bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
                 TradePro
               </span>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Experience the future of trading education with features designed for both beginners and seasoned professionals
+              Experience the future of trading education with features designed for both beginners
+              and seasoned professionals
             </p>
           </motion.div>
 
@@ -339,42 +366,48 @@ const Landing = () => {
               {
                 icon: Zap,
                 title: 'Real-Time Market Data',
-                description: 'Execute trades instantly with live market data feeds. Experience realistic trading conditions powered by professional-grade infrastructure.',
+                description:
+                  'Execute trades instantly with live market data feeds. Experience realistic trading conditions powered by professional-grade infrastructure.',
                 gradient: 'from-yellow-500/20 to-orange-500/5',
                 delay: 0.1,
               },
               {
                 icon: Copy,
                 title: 'Copy Trading',
-                description: 'Follow and automatically replicate trades from top performers. Learn proven strategies from successful traders in real-time.',
+                description:
+                  'Follow and automatically replicate trades from top performers. Learn proven strategies from successful traders in real-time.',
                 gradient: 'from-blue-500/20 to-cyan-500/5',
                 delay: 0.2,
               },
               {
                 icon: BarChart3,
                 title: 'Advanced Analytics',
-                description: 'Track performance with institutional-grade analytics. Deep insights into your trading patterns, strengths, and improvement areas.',
+                description:
+                  'Track performance with institutional-grade analytics. Deep insights into your trading patterns, strengths, and improvement areas.',
                 gradient: 'from-purple-500/20 to-pink-500/5',
                 delay: 0.3,
               },
               {
                 icon: Users,
                 title: 'Social Trading Community',
-                description: 'Connect with traders worldwide. Share strategies, compete on leaderboards, and grow your skills together.',
+                description:
+                  'Connect with traders worldwide. Share strategies, compete on leaderboards, and grow your skills together.',
                 gradient: 'from-green-500/20 to-emerald-500/5',
                 delay: 0.4,
               },
               {
                 icon: Shield,
                 title: 'Bank-Level Security',
-                description: 'Your data is protected with military-grade encryption. Trade with confidence on our secure, compliant platform.',
+                description:
+                  'Your data is protected with military-grade encryption. Trade with confidence on our secure, compliant platform.',
                 gradient: 'from-red-500/20 to-rose-500/5',
                 delay: 0.5,
               },
               {
                 icon: TrendingUp,
                 title: 'Multi-Asset Trading',
-                description: 'Access Forex, Stocks, Commodities, Indices, and Crypto. Build a diversified portfolio across all major asset classes.',
+                description:
+                  'Access Forex, Stocks, Commodities, Indices, and Crypto. Build a diversified portfolio across all major asset classes.',
                 gradient: 'from-primary/20 to-primary/5',
                 delay: 0.6,
               },
@@ -389,23 +422,23 @@ const Landing = () => {
                 <Card className="group h-full relative overflow-hidden border-border/50 hover:border-primary/30 transition-all duration-300 bg-gradient-to-br from-card to-card/50 backdrop-blur-sm hover:shadow-[var(--shadow-elevation-medium)]">
                   <CardContent className="p-8 space-y-4">
                     <div className="relative inline-block">
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-primary/10`}>
+                      <div
+                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-primary/10`}
+                      >
                         <feature.icon className="h-7 w-7 text-primary" />
                       </div>
                       <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    
+
                     <div className="space-y-3">
                       <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
                         {feature.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
+                      <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                     </div>
 
-                    <Button 
-                      variant="ghost" 
+                    <Button
+                      variant="ghost"
                       className="group/btn p-0 h-auto font-semibold text-primary hover:text-primary hover:bg-transparent"
                     >
                       Learn more
@@ -444,21 +477,24 @@ const Landing = () => {
                 step: '01',
                 icon: Users,
                 title: 'Create Account',
-                description: 'Sign up in 2 minutes with just your email. No credit card or payment information required.',
+                description:
+                  'Sign up in 2 minutes with just your email. No credit card or payment information required.',
                 time: '2 min',
               },
               {
                 step: '02',
                 icon: Target,
                 title: 'Get Virtual Capital',
-                description: 'Receive $100,000 in virtual funds instantly. Start trading across 90+ markets immediately.',
+                description:
+                  'Receive $100,000 in virtual funds instantly. Start trading across 90+ markets immediately.',
                 time: 'Instant',
               },
               {
                 step: '03',
                 icon: TrendingUp,
                 title: 'Start Trading',
-                description: 'Execute your first trade and begin learning. Access all features, analytics, and educational resources.',
+                description:
+                  'Execute your first trade and begin learning. Access all features, analytics, and educational resources.',
                 time: 'Instant',
               },
             ].map((item, index) => (
@@ -490,9 +526,7 @@ const Landing = () => {
                       <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
+                      <p className="text-muted-foreground leading-relaxed">{item.description}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -512,7 +546,10 @@ const Landing = () => {
             className="text-center mt-12"
           >
             <Link to="/signup">
-              <Button size="lg" className="group shadow-[var(--glow-primary)] hover:shadow-[var(--glow-primary)] px-8">
+              <Button
+                size="lg"
+                className="group shadow-[var(--glow-primary)] hover:shadow-[var(--glow-primary)] px-8"
+              >
                 Get Started Now
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -542,21 +579,24 @@ const Landing = () => {
               {
                 name: 'Sarah Mitchell',
                 role: 'Professional Trader',
-                content: "TradePro's simulation environment is incredibly realistic. I perfected my strategy without risking capital. The analytics helped me identify and fix my weak points.",
+                content:
+                  "TradePro's simulation environment is incredibly realistic. I perfected my strategy without risking capital. The analytics helped me identify and fix my weak points.",
                 rating: 5,
                 delay: 0.1,
               },
               {
                 name: 'James Rodriguez',
                 role: 'Forex Specialist',
-                content: "The copy trading feature is game-changing. I learned more in 3 months by following top traders than I did in years of trial and error. Absolutely brilliant platform.",
+                content:
+                  'The copy trading feature is game-changing. I learned more in 3 months by following top traders than I did in years of trial and error. Absolutely brilliant platform.',
                 rating: 5,
                 delay: 0.2,
               },
               {
                 name: 'Emma Chen',
                 role: 'Day Trader',
-                content: "Real-time data with zero lag. The platform feels exactly like my live trading account. Perfect for testing new strategies before deploying them with real money.",
+                content:
+                  'Real-time data with zero lag. The platform feels exactly like my live trading account. Perfect for testing new strategies before deploying them with real money.',
                 rating: 5,
                 delay: 0.3,
               },
@@ -583,7 +623,10 @@ const Landing = () => {
                     <div className="flex items-center gap-4 pt-4 border-t border-border/50">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/10 group-hover:scale-110 transition-transform">
                         <span className="text-lg font-bold text-primary">
-                          {testimonial.name.split(' ').map(n => n[0]).join('')}
+                          {testimonial.name
+                            .split(' ')
+                            .map((n) => n[0])
+                            .join('')}
                         </span>
                       </div>
                       <div>
@@ -606,7 +649,10 @@ const Landing = () => {
           >
             <div className="text-sm text-muted-foreground font-semibold">As featured in:</div>
             {['Bloomberg', 'Reuters', 'Forbes', 'WSJ', 'TechCrunch'].map((brand) => (
-              <div key={brand} className="text-2xl font-bold text-muted-foreground hover:text-primary/70 transition-colors">
+              <div
+                key={brand}
+                className="text-2xl font-bold text-muted-foreground hover:text-primary/70 transition-colors"
+              >
                 {brand}
               </div>
             ))}
@@ -647,7 +693,7 @@ const Landing = () => {
                     <span className="font-semibold text-lg group-hover:text-primary transition-colors">
                       {faq.question}
                     </span>
-                    <ChevronDown 
+                    <ChevronDown
                       className={`w-5 h-5 text-primary transition-transform duration-300 flex-shrink-0 ${
                         expandedFAQ === index ? 'rotate-180' : ''
                       }`}
@@ -687,19 +733,20 @@ const Landing = () => {
                 <div className="max-w-3xl mx-auto text-center space-y-8">
                   <div className="space-y-4">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold">
-                      <span className="text-gradient-premium">
-                        Start Trading Today
-                      </span>
+                      <span className="text-gradient-premium">Start Trading Today</span>
                     </h2>
                     <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                      Join <span className="text-primary font-semibold">100,000+ traders</span> mastering the markets. Get <span className="text-primary font-semibold">$100,000 virtual capital</span>, access to all features, and unlimited trades — completely free.
+                      Join <span className="text-primary font-semibold">100,000+ traders</span>{' '}
+                      mastering the markets. Get{' '}
+                      <span className="text-primary font-semibold">$100,000 virtual capital</span>,
+                      access to all features, and unlimited trades — completely free.
                     </p>
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <Link to="/signup">
-                      <Button 
-                        size="lg" 
+                      <Button
+                        size="lg"
                         className="group px-8 shadow-[var(--glow-primary)] hover:shadow-[var(--glow-primary)] text-base h-14"
                       >
                         Create Free Account
@@ -707,7 +754,11 @@ const Landing = () => {
                       </Button>
                     </Link>
                     <Link to="/login">
-                      <Button size="lg" variant="outline" className="border-primary/20 hover:border-primary/40 text-base h-14">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="border-primary/20 hover:border-primary/40 text-base h-14"
+                      >
                         Sign In
                       </Button>
                     </Link>
@@ -719,7 +770,10 @@ const Landing = () => {
                       { icon: Lock, text: 'Bank-Level Security' },
                       { icon: Globe, text: 'Available Worldwide' },
                     ].map((item) => (
-                      <div key={item.text} className="flex items-center justify-center gap-2 text-muted-foreground">
+                      <div
+                        key={item.text}
+                        className="flex items-center justify-center gap-2 text-muted-foreground"
+                      >
                         <item.icon className="h-5 w-5 text-primary" />
                         <span className="text-sm font-medium">{item.text}</span>
                       </div>
@@ -768,42 +822,96 @@ const Landing = () => {
               <div className="space-y-4">
                 <div className="text-2xl font-display font-bold">TradePro</div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Master trading without the risk. Professional-grade simulation platform trusted by 100K+ traders worldwide.
+                  Master trading without the risk. Professional-grade simulation platform trusted by
+                  100K+ traders worldwide.
                 </p>
               </div>
 
               <div>
                 <h4 className="font-semibold mb-4">Product</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><Link to="/features/web-trading" className="hover:text-primary transition-colors">Features</Link></li>
-                  <li><Link to="/assets/forex" className="hover:text-primary transition-colors">Markets</Link></li>
-                  <li><Link to="/education/articles" className="hover:text-primary transition-colors">Education</Link></li>
-                  <li><Link to="/features/copy-trading" className="hover:text-primary transition-colors">Copy Trading</Link></li>
+                  <li>
+                    <Link
+                      to="/features/web-trading"
+                      className="hover:text-primary transition-colors"
+                    >
+                      Features
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/assets/forex" className="hover:text-primary transition-colors">
+                      Markets
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/education/articles" className="hover:text-primary transition-colors">
+                      Education
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/features/copy-trading"
+                      className="hover:text-primary transition-colors"
+                    >
+                      Copy Trading
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-semibold mb-4">Company</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><Link to="/about/company" className="hover:text-primary transition-colors">About Us</Link></li>
-                  <li><Link to="/about/team" className="hover:text-primary transition-colors">Team</Link></li>
-                  <li><Link to="/about/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-                  <li><Link to="/about/articles" className="hover:text-primary transition-colors">Blog</Link></li>
+                  <li>
+                    <Link to="/about/company" className="hover:text-primary transition-colors">
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/about/team" className="hover:text-primary transition-colors">
+                      Team
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/about/contact" className="hover:text-primary transition-colors">
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/about/articles" className="hover:text-primary transition-colors">
+                      Blog
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-semibold mb-4">Legal</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><Link to="/legal/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-                  <li><Link to="/legal/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                  <li><Link to="/legal/risk" className="hover:text-primary transition-colors">Risk Disclosure</Link></li>
+                  <li>
+                    <Link to="/legal/terms" className="hover:text-primary transition-colors">
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/legal/privacy" className="hover:text-primary transition-colors">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/legal/risk" className="hover:text-primary transition-colors">
+                      Risk Disclosure
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
 
             <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-              <p>© 2025 TradePro. All rights reserved. Trading simulators are for educational purposes only.</p>
+              <p>
+                © 2025 TradePro. All rights reserved. Trading simulators are for educational
+                purposes only.
+              </p>
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-2">
                   <Lock className="w-4 h-4 text-primary" />
